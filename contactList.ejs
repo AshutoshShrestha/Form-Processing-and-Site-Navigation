@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>Contact List</title>
+        <style>
+            table,th,td{
+                border: solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Contact List </h1>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Contact by Phone</th>
+                <th>Contact by Email</th>
+                <th>Contact by Mail</th>
+            </tr>
+            <% for (q in contactList){ %>
+                <tr>
+                    <td><%= contactList[q]["prefix"] + ". " + contactList[q]["first"] + " " + contactList[q]["last"] %></td>
+                    <td> <%= contactList[q]["street"] + ", " + contactList[q]["city"] + ", " + contactList[q]["state"] + ", " + contactList[q]["zip"]%></td>
+                    <% if (contactList[q]["phone"][1] == "on" || contactList[q]["any"] == "on") { %>
+                        <td><%=contactList[q]["phone"][0] %></td>
+                    <%}else {%>
+                        <td> No</td>
+                    <%}%>
+                    <% if (contactList[q]["email"][1] == "on" || contactList[q]["any"] == "on") { %>
+                        <td> <%=contactList[q]["email"] %></td>
+                    <%} else {%>
+                        <td>No</td>
+                    <%} %>
+                    <% if (contactList[q]["mail"] == "on" || contactList[q]["any"] == "on") { %>
+                        <td> Yes</td>
+                    <%} else {%>
+                        <td> No</td>
+                <%}%></tr>
+            <%}%>
+        </table>
+        <footer>
+            <a href = "project1.html">Go back to home page</a>
+        </footer>
+    </body>
+</html>
